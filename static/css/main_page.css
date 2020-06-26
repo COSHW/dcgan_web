@@ -1,0 +1,82 @@
+body{
+    color:#fff;
+    background-color: #000;
+    font-family:Century Gothic;
+    height: 100%;
+}
+a{
+    color: #000;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+
+}
+a:hover{
+    color:#fff;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 35px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.otherLink{
+    color:#90ee90;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+.otherLink:hover{
+    color:#5f945f;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+.navig {
+    float: right;
+    text-align: -webkit-match-parent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 20px;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+b{
+    color:cornflowerblue;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.footer {
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    left:0;
+    padding-left: 13.5%; /* Поля вокруг текста */
+    background: #68A168; /* Цвет фона */
+    color: #000; /* Цвет текста */
+}
+@media (pointer:none), (pointer:coarse) {
+    .footer{
+        position: fixed;
+    }
+}
+img.rounded-corners {
+    border-radius: 30px;
+    max-width: 100%;
+}
+hr{
+    color: #fff;
+    border-top: 3px solid rgb(255, 255, 255);
+}

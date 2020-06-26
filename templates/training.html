@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css\main_page.css' %}">
+    <link rel="icon" href="{% static 'images\icon.png' %}">
+    <title>Обучение</title>
+</head>
+<body>
+<nav class="navbar navbar-custom navbar-fixed-top" style="background-color: #68A168;">
+    <div class="container" style="margin-top: 1%">
+        <div class="navbar-right">
+            <ul class="navig">
+                <b><a href="/">Информация</a></b>
+                <b><a href="/generation/">Генерация</a></b>
+                <b><a href="/algorithm/">Алгоритм</a></b>
+                <b><a href="/training/">Обучение</a></b>
+                <b><a href="/pictures/">Изображения</a></b>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center" style="margin-top: 5%">
+    <h2>Обучение по своим данным</h2>
+    <div class="col-md-offset-2 col-xs-12">
+        <p><b>По кнопке ниже</b>, можно скачать программу обучения собственной модели. <br>Для запуска <b>активируйте python</b> в виртуальной среде, находящийся в папке venv <br>(Запустить в консоли из папки <b>Scripts</b>: <b>activate.bat</b>). <br>После активации python, запустите фаил <b>interface.py</b> в корневой папке проекта (Запустить в консоли: <b>python interface.py</b>)</p>
+        <p><a class="otherLink" style="font-size: 40px" href="https://drive.google.com/file/d/1wssODlLRnqggR_iVLOa_oPlbNv0XdjCn/view?usp=sharing" download><img src="{% static 'images\download.png' %}" width="5%" height="5%"> Скачать</a></p>
+    </div>
+</div>
+
+
+<footer class="page-footer font-small blue footer" style="position: fixed">
+
+
+  <div class="footer-copyright py-3 ">
+      <p style="text-align: left"><b style="color: #000;">Студент:</b> Попов Роман<br>
+          <b style="color: #000;">Научный руководитель:</b> Прокопьев Николай</p>
+  </div>
+
+
+</footer>
+
+</body>
+</html>

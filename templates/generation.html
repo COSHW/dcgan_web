@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css\main_page.css' %}">
+    <link rel="icon" href="{% static 'images\icon.png' %}">
+    <title>Генерация</title>
+</head>
+<body>
+<nav class="navbar navbar-custom navbar-fixed-top" style="background-color: #68A168;">
+    <div class="container" style="margin-top: 1%">
+        <div class="navbar-right">
+            <ul class="navig">
+                <b><a href="/">Информация</a></b>
+                <b><a href="/generation/">Генерация</a></b>
+                <b><a href="/algorithm/">Алгоритм</a></b>
+                <b><a href="/training/">Обучение</a></b>
+                <b><a href="/pictures/">Изображения</a></b>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container text-center" style="margin-top: 5%; margin-bottom:5%">
+    <h2>Генерация изображения</h2>
+    <div class="col-md-offset-2 col-xs-12">
+        <div id="image" style="margin-bottom: 5%">
+
+        </div>
+        {% if created == True %}
+            <form action="/save/" method="POST">{% csrf_token %}
+                <label for="pic_name">Название: </label>
+                <input type="text" name="pic_name" class="form-control" style="margin: 10px 0 10px 25%; width: 50%">
+                <input type="hidden" name="img_path" value="{{ img_path }}">
+                <input type="hidden" name="model" value="{{ model }}">
+                <input class="btn btn-primary btn-outline-light" type="submit" value="Сохранить">
+            </form>
+            <hr>
+        {% endif %}
+        <form method="post">{% csrf_token %}
+            <select name="num_of_examples" class="browser-default custom-select" style="width: 40%; margin-top: 10px">
+              <option selected>Количество экземпляров</option>
+                <option value="1">1</option>
+                <option value="4">4</option>
+                <option value="9">9</option>
+                <option value="16">16</option>
+            </select>
+            <select name="model_name" class="browser-default custom-select" style="width: 40%; margin-top: 10px">
+              <option selected>*Модель</option>
+                  {% for index, model in models %}
+                    <option value={{ model }}>{{ model }}</option>
+                  {% endfor %}
+            </select>
+            <textarea name="seed_list" class="form-control" style="margin: 20px" id="seed" rows="4" placeholder="Необязательно. Список вектора z из 100 чисел, использвуя который произойдёт генерация. Пример: 188, 45, 255, 89, 63, 161, 180, 237, 114, 222, 91, 140, 136, 10, 233, 178, 15, 119, 133, 216, 199, 117, 46, 65, 73, 146, 72, 56, 219, 9, 5, 135, 181, 70, 166, 14, 105, 98, 51, 194, 223, 165, 137, 48, 236, 254, 83, 53, 210, 100, 170, 117, 174, 179, 14, 207, 180, 105, 209, 163, 239, 40, 173, 48, 235, 75, 249, 253, 184, 32, 250, 20, 248, 3, 30, 189, 82, 110, 98, 152, 68, 215, 64, 130, 130, 56, 242, 84, 70, 236, 60, 217, 152, 116, 36, 8, 57, 162, 47, 83"></textarea>
+            <input class="btn btn-primary btn-outline-light" type="submit" value="Создать случайное">
+        </form>
+    </div>
+</div>
+
+
+<footer id="footer" class="page-footer font-small blue footer" style="position: fixed">
+
+
+  <div class="footer-copyright py-3 ">
+      <p style="text-align: left"><b style="color: #000;">Студент:</b> Попов Роман<br>
+          <b style="color: #000;">Научный руководитель:</b> Прокопьев Николай</p>
+  </div>
+
+
+</footer>
+
+<script>
+    var image;
+    image = '{{img_path}}';
+    console.log(image);
+    if (image === 'Вектор z указан неправильно!' || image === 'Выберите модель!' || image === 'Выберите модель!') {
+        document.getElementById('image').innerHTML = "<p>$error</p>".replace("$error", image);
+    }
+    else if (image !== "") {
+        document.getElementById('image').innerHTML = "<img src=\"{% static 'train_images\$img' %}\">".replace('$img', image);
+        document.getElementById('footer').style = 'position: unset'
+    }
+</script>
+
+</body>
+</html>
